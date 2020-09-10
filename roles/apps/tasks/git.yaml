@@ -1,0 +1,8 @@
+- name: Set git config
+  file:
+    src: "{{ ansible_env.PWD }}/roles/apps/files/{{ item }}"
+    path: "~/.{{ item }}"
+    state: link
+  with_items:
+  - gitconfig
+  - gitignore_global

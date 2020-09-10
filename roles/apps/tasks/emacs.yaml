@@ -1,0 +1,4 @@
+- name: Install Emacs
+  homebrew:
+    name: emacs
+    state: latest

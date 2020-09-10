@@ -1,0 +1,10 @@
+- name: Install tmux
+  homebrew:
+    name: tmux
+    state: latest
+    
+- name: Set tmux config
+  file:
+    src: "{{ ansible_env.PWD }}/roles/apps/files/tmux.conf"
+    path: "~/.tmux.conf"
+    state: link

@@ -1,0 +1,8 @@
+- name: Setup apps
+  include: "{{ app_item }}"
+  with_items:
+  - emacs.yaml
+  - git.yaml
+  - tmux.yaml
+  loop_control:
+    loop_var: app_item

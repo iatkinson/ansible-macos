@@ -1,0 +1,10 @@
+# Temp files
+*~
+
+# OS Generated files
+.DS_Store
+.DS_Store?
+._*
+.Trashes
+.Spotlight-V100
+Thumbs.db
