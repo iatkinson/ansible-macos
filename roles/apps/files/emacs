@@ -1,0 +1,38 @@
+(require 'package) 
+(package-initialize)
+
+(require 'whitespace)
+
+; Enable ido
+(require 'ido)
+(ido-mode t);
+
+; Start server
+(server-start)
+
+; hide menu
+(menu-bar-mode -1)
+
+; Better buffer naming
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'reverse)
+(setq uniquify-separator "/")
+(setq uniquify-after-kill-buffer-p t) ; rename after killing uniquified
+(setq uniquify-ignore-buffers-re "^\*") ; don't muck with special buffers
+
+; Show column marker
+(setq display-fill-column-indicator-column 80)
+(display-fill-column-indicator-mode)
+
+; Enable line/col in status
+(setq line-number-mode t)
+(setq column-number-mode t)
+
+; Better buffer
+(global-set-key (kbd "C-x C-b") 'bs-show)
+
+(global-set-key (kbd "M-i") 'previous-buffer)
+(global-set-key (kbd "M-o") 'next-buffer)
+(global-set-key (kbd "C-M-i") '(lambda() (interactive) (other-window -1)))
+(global-set-key (kbd "C-M-o") 'other-window)
+
