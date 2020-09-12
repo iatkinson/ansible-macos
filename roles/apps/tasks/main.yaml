@@ -1,10 +1,7 @@
 - name: Setup apps
-  include: "{{ app_item }}"
-  with_items:
-  - spectacle.yaml
-  - iterm.yaml
-  - emacs.yaml
-  - git.yaml
-  - tmux.yaml
+  include: "{{ app_item | basename }}"
+  with_fileglob:
+  - "*.yaml"
+  when: app_item|basename != "main.yaml"
   loop_control:
     loop_var: app_item
