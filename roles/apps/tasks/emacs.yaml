@@ -2,3 +2,9 @@
   homebrew:
     name: emacs
     state: latest
+
+- name: Set config
+  file:
+    src: "{{ ansible_env.PWD }}/roles/apps/files/emacs"
+    path: "~/.emacs"
+    state: link
