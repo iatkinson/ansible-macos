@@ -1,6 +1,7 @@
 - name: Setup apps
   include: "{{ app_item }}"
   with_items:
+  - iterm.yaml
   - emacs.yaml
   - git.yaml
   - tmux.yaml

@@ -1,0 +1,6 @@
+- name: System settings
+  include: "{{ settings_item }}"
+  with_items:
+  - dock.yaml
+  loop_control:
+    loop_var: settings_item

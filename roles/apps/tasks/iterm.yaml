@@ -1,9 +1,7 @@
-- hosts: localhost
-  connection: local
-  roles:
-  - settings
-  - apps
-  - role: tkimball83.iterm2
+- name: Install iterm2
+  import_role:
+    name: tkimball83.iterm2
+  vars:
     iterm2_defaults:
     - name: OnlyWhenMoreTabs
       type: string
@@ -11,4 +9,3 @@
     - name: PromptOnQuit
       type: bool      
       value: false
-
