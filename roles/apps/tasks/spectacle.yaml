@@ -1,0 +1,7 @@
+- name: Install Spectacle
+  homebrew_cask:
+    name: spectacle
+    state: latest
+
+- name: Start spectacle on login
+  command: osascript -e 'tell application "System Events" to make login item at end with properties {name:"Spectacle", path:"/Applications/Spectacle.app", hidden:false}'
