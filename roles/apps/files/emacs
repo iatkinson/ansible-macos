@@ -1,4 +1,4 @@
-(require 'package) 
+(require 'package)
 (package-initialize)
 
 (require 'whitespace)
@@ -36,3 +36,12 @@
 (global-set-key (kbd "C-M-i") '(lambda() (interactive) (other-window -1)))
 (global-set-key (kbd "C-M-o") 'other-window)
 
+; Save backups in a common location.
+(setq
+   backup-by-copying t      ; don't clobber symlinks
+   backup-directory-alist
+    '(("." . "~/.emacs_saves/")) 
+   delete-old-versions t
+   kept-new-versions 6
+   kept-old-versions 2
+   version-control t)       ; use versioned backups
