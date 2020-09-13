@@ -1,13 +1,38 @@
-- name: Configure macOS Dock
-  import_role:
-    name:  fubarhouse.macdock
-  vars:
-    dockitems_remove_all: true
-    dockitems_enabled:
-    - name: Google Chrome
-      path: "/Applications/Google Chrome.app"
-      pos: 1
-    - name: iTerm
-      path: "/Applications/iTerm.app"
-      pos: 2
+- name: Install dockutil
+  homebrew:
+    name: dockutil
+
+- block:
+  - name: Set location
+    osx_defaults:
+      domain: com.apple.dock
+      key: orientation
+      type: string
+      value: left
     
+  - name: Set size
+    osx_defaults:
+      domain: com.apple.dock
+      key: tilesize
+      type: float
+      value: 54
+
+  - name: Disable recent
+    osx_defaults:
+      domain: com.apple.dock
+      key: show-recents
+      type: bool
+      value: false
+
+- name: Remove all dock items
+  command: dockutil --remove all --no-restart
+
+- name: Set items
+  command: dockutil --add "{{ item }}" --no-restart
+  with_items:
+  - "/Applications/Google Chrome.app"
+  - "/Applications/iTerm.app"
+
+- name: Restart Dock
+  command: killall Dock
+

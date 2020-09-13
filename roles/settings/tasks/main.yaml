@@ -1,6 +1,7 @@
 - name: System settings
-  include: "{{ settings_item }}"
-  with_items:
-  - dock.yaml
+  include: "{{ settings_item | basename }}"
+  with_fileglob:
+  - "*.yaml"
+  when: settings_item|basename != "main.yaml"
   loop_control:
     loop_var: settings_item
