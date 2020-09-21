@@ -1,0 +1,8 @@
+- block:
+  - name: Set secondary click
+    osx_defaults:
+      domain: com.apple.driver.AppleBluetoothMultitouch.trackpad.plist
+      key: TrackpadCornerSecondaryClick
+      type: integer
+      value: 2 # Right corner.
+

@@ -1,0 +1,7 @@
+- name: Install CheatSheet
+  homebrew_cask:
+    name: cheatsheet
+    state: latest
+
+- name: Start CheatSheet on login
+  command: osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/CheatSheet.app", hidden:false}'
