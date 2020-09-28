@@ -1,0 +1,10 @@
+- name: Install Anaconda
+  homebrew_cask:
+    name: anaconda
+    state: latest
+
+- name: Add Anaconda to path
+  lineinfile:
+    path: ~/.bash_profile
+    create: yes
+    line: export PATH="/usr/local/anaconda3/bin:$PATH"
