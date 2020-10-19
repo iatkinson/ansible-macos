@@ -6,3 +6,9 @@
   with_items:
   - gitconfig
   - gitignore_global
+
+- name: Enable git bash-autocomplete
+  lineinfile:
+    path: ~/.bash_profile
+    create: yes
+    line: "[ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash ] && . /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash"

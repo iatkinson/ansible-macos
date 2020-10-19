@@ -10,3 +10,8 @@
 .Trashes
 .Spotlight-V100
 Thumbs.db
+
+# Python
+.spyproject
+.pytype
+__pycache__
