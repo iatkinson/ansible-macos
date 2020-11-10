@@ -7,8 +7,18 @@
   - gitconfig
   - gitignore_global
 
-- name: Enable git bash-autocomplete
-  lineinfile:
-    path: ~/.bash_profile
-    create: yes
-    line: "[ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash ] && . /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash"
+- name: Get git-prompt
+  get_url:
+   url: https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+   dest: ~/.git-prompt.sh
+
+- name: Git bash settings
+  blockinfile:
+   path: ~/.bash_profile
+   marker: "# {mark} git settings"
+   block: |
+     # Enable git bash-autocomplete
+     [ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash ] && . /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
+     # Show branch in prompt
+     source ~/.git-prompt.sh
+     PS1='\W$(__git_ps1 " (\[\e[0;32m%s\e[m\])")\$ '
